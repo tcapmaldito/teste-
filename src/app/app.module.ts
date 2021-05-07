@@ -10,12 +10,13 @@ import { CardComponent } from './dashboard/card/card.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FakeApiService } from './fake-api.service';
 import { HelloComponent } from './hello.component';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, BrowserAnimationsModule, MatButtonModule, MatChipsModule, MatCardModule, HttpClientModule, InMemoryWebApiModule.forRoot(FakeApiService, {delay: 5000}) ],
-  declarations: [ AppComponent, HelloComponent, DashboardComponent, CardComponent ],
-  bootstrap:    [ AppComponent ]
+  imports: [BrowserModule, FlexLayoutModule, FormsModule, BrowserAnimationsModule, MatButtonModule, MatChipsModule, MatCardModule, HttpClientModule, InMemoryWebApiModule.forRoot(FakeApiService, { delay: 0 })],
+
+  declarations: [AppComponent, HelloComponent, DashboardComponent, CardComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

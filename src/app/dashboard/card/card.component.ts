@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
+import { DashboardComponent } from '../../dashboard/dashboard.component';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -8,17 +9,27 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CardComponent implements OnInit {
 
   @Input() card;
-  constructor() { }
+  constructor(private httpClient: HttpClient, private dashboardComponent: DashboardComponent) {
+
+  }
 
   ngOnInit() {
   }
 
-  onLike(card: any){
-    // TODO: incrementar o like, salvar via rest
+  onLike(card: any) {
+    console.log(card)
+    let position = this.dashboardComponent.cards.findIndex(item => item.id == card.id);
+    this.dashboardComponent.cards.splice(position, 1, Object.assign(card, card.likes++))
+    this.dashboardComponent.putSkills(card)
   }
+ 
 
-  onShare(card: any){
-    // TODO: abrir o link do seu linkedin
+  onShare() {
+    const link = document.createElement('a');
+    link.target = '_blank';
+    link.href = 'https://www.linkedin.com/in/vinicius-rodrigues-060b68208/';
+    link.setAttribute('visibility', 'hidden');
+    link.click();
   }
 
 }

@@ -1,2 +1,20 @@
 <!--TODO: melhorar o layout dos cards para exibir ao menos 2 por linha em telas > md, e pequenas (sm) 1 -->
-<app-card [card]="card" *ngFor="let card of cards"></app-card>
+<!-- <div fxLayout='row' fxLayoutWrap="wrap">
+
+   
+  
+</div> -->
+
+<div class="flex-container" fxLayout="row wrap" fxLayout.xs="column wrap" fxLayoutAlign="center center">
+  <app-card [card]="card" class="flex-item" fxFlex.lg=33 [fxFlex.gt-md]="regularDistribution" fxFlex.md=50 fxFlex.sm=100
+    *ngFor="let card of cards"></app-card>
+
+</div>
+<!-- <div fxFlex="33" [fxLayout]="direction" fxLayout.md="row" class="two">
+
+  <div fxFlex="22"    fxFlex.md="10px" fxHide.lg                       class="two_one"></div>
+  <div fxFlex="205px" fxFlex.md="65"                                    class="two_two"></div>
+  <div fxFlex="30px"  fxFlex.md="25"   fxShow [fxHide.md]="hideBox"   class="two_three"></div>
+
+</div>
+<div fxFlex class="three"></div> -->

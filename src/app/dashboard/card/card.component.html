@@ -9,7 +9,10 @@
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>LIKE {{card.likes}}</button>
-    <button mat-button>SHARE</button>
+    <button mat-button
+      [ngStyle]="{'color': card.likes >= 5 && card.likes <= 10 ? 'blue': card.likes> 10 ? 'green' :  'black'}"
+      (click)="onLike(card) ">LIKE {{card.likes}}</button>
+    <button (click)="onShare()"
+        mat-button>SHARE</button>
   </mat-card-actions>
 </mat-card>
